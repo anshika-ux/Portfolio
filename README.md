@@ -4,7 +4,7 @@ Welcome to my professional Portfolio repository! This website is designed to hig
 
 ---
 ## Demo 🚀
-👉 Live Demo :[Portfolio][https://anshika-creates.vercel.app]
+👉 Live Demo :[https://anshika-creates.vercel.app]
 
 ## ✨ Key Features
 
