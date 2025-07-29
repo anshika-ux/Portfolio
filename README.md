@@ -1,4 +1,4 @@
-# 🌟 Anshika – Portfolio
+# 🌟 Portfolio
 
 Welcome to my professional Portfolio repository! This website is designed to highlight my expertise in front-end web development, featuring elegant design, responsive layouts, and interactive elements. Explore my work, background, and skills—all crafted with passion and precision.
 
