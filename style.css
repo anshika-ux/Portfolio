@@ -17,9 +17,7 @@
     --glass-border: rgba(255, 255, 255, 0.2);
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -29,6 +27,8 @@ body {
     min-height: 100vh;
     cursor: none;
 }
+
+/* Custom Emoji Cursor */
 #emoji-cursor {
     position: fixed;
     left: 0;
@@ -38,11 +38,13 @@ body {
     font-size: 2rem;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.05s linear; /* Reduced transition time */
+    transition: transform 0.05s linear;
     user-select: none;
     transform-origin: center;
-    will-change: transform; /* Optimize performance */
+    will-change: transform;
 }
+
+/* Dynamic Text & Highlights */
 .dynamic-text {
     font-size: 2.5rem;
     min-height: 60px;
@@ -54,6 +56,11 @@ body {
     border-right: 4px solid var(--primary-color);
     padding-right: 8px;
     animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-color); }
 }
 
 .highlight {
@@ -72,6 +79,7 @@ body {
     100% { transform: scale(1); }
 }
 
+/* 3D Hero Section */
 .hero-3d {
     min-height: 100vh;
     display: flex;
@@ -83,13 +91,11 @@ body {
     position: relative;
     gap: 40px;
 }
-
 .hero-content-3d {
     flex: 1;
     max-width: 600px;
     z-index: 2;
 }
-
 .hero-3d-object {
     flex: 0 0 400px;
     height: 400px;
@@ -98,7 +104,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .rotating-cube {
     width: 200px;
     height: 200px;
@@ -106,7 +111,6 @@ body {
     transform-style: preserve-3d;
     animation: rotateCube 20s infinite linear;
 }
-
 .cube-face {
     position: absolute;
     width: 200px;
@@ -115,18 +119,17 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.3);
     opacity: 0.8;
 }
-
 .cube-face.front { transform: rotateY(0deg) translateZ(100px); }
 .cube-face.back { transform: rotateY(180deg) translateZ(100px); }
 .cube-face.right { transform: rotateY(90deg) translateZ(100px); }
 .cube-face.left { transform: rotateY(-90deg) translateZ(100px); }
 .cube-face.top { transform: rotateX(90deg) translateZ(100px); }
 .cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
-
 @keyframes rotateCube {
     0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
     100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
 }
+
 /* 3D Background Canvas */
 #bgCanvas {
     position: fixed;
@@ -148,13 +151,11 @@ body {
     pointer-events: none;
     z-index: 1;
 }
-
 .shape-3d {
     position: absolute;
     opacity: 0.3;
     animation: float 20s infinite linear;
 }
-
 .shape-3d.cube {
     width: 40px;
     height: 40px;
@@ -165,7 +166,6 @@ body {
     transform-style: preserve-3d;
     animation: rotateCube 10s infinite linear, float 20s infinite linear;
 }
-
 .shape-3d.sphere {
     width: 30px;
     height: 30px;
@@ -175,7 +175,6 @@ body {
     right: 15%;
     animation-delay: -5s;
 }
-
 .shape-3d.pyramid {
     width: 0;
     height: 0;
@@ -186,7 +185,6 @@ body {
     right: 10%;
     animation-delay: -10s;
 }
-
 .shape-3d.torus {
     width: 25px;
     height: 25px;
@@ -196,7 +194,6 @@ body {
     left: 20%;
     animation-delay: -15s;
 }
-
 .shape-3d.octahedron {
     width: 30px;
     height: 30px;
@@ -206,23 +203,9 @@ body {
     left: 70%;
     animation-delay: -7s;
 }
-
 @keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-    }
-}
-
-@keyframes rotateCube {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-    100% {
-        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
-    }
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
 }
 
 /* Navigation */
@@ -237,7 +220,6 @@ body {
     z-index: 1000;
     transition: all 0.3s ease;
 }
-
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -246,7 +228,6 @@ body {
     align-items: center;
     padding: 0 40px;
 }
-
 .logo-3d {
     font-size: 1.8rem;
     font-weight: bold;
@@ -255,17 +236,14 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-
 .logo-3d:hover {
     transform: scale(1.1) rotateY(10deg);
 }
-
 .nav-links {
     display: flex;
     list-style: none;
     gap: 40px;
 }
-
 .nav-links a {
     color: var(--text-light);
     text-decoration: none;
@@ -275,7 +253,6 @@ body {
     transition: all 0.3s ease;
     transform-style: preserve-3d;
 }
-
 .nav-links a::before {
     content: attr(data-text);
     position: absolute;
@@ -294,39 +271,18 @@ body {
     transform: rotateX(90deg);
     transition: all 0.3s ease;
 }
-
 .nav-links a:hover::before {
     opacity: 1;
     transform: rotateX(0deg);
 }
-
 .nav-links a:hover {
     transform: translateY(-2px);
 }
 
 /* Container */
-.container {
-    position: relative;
-    z-index: 2;
-}
+.container { position: relative; z-index: 2; }
 
-/* Hero Section */
-.hero-3d {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.hero-content-3d {
-    flex: 1;
-    max-width: 600px;
-}
-
+/* Glitch Text Animation */
 .glitch-text {
     font-size: 4rem;
     font-weight: bold;
@@ -354,7 +310,6 @@ body {
     color: var(--secondary-color);
     z-index: -2;
 }
-
 @keyframes glitch {
     0%, 100% { transform: translateX(0); }
     20%, 40% { transform: translateX(-2px); }
@@ -371,12 +326,6 @@ body {
     20%, 40%, 60%, 80% { transform: translateX(-5px); }
 }
 
-
-@keyframes blink {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--primary-color); }
-}
-
 .subtitle {
     font-size: 1.2rem;
     color: var(--text-gray);
@@ -389,7 +338,6 @@ body {
     gap: 20px;
     flex-wrap: wrap;
 }
-
 .btn-3d {
     position: relative;
     padding: 15px 30px;
@@ -405,11 +353,7 @@ body {
     border: none;
     background: none;
 }
-.btn-3d span {
-    position: relative;
-    z-index: 2;
-    transition: all 0.3s ease;
-}
+.btn-3d span { position: relative; z-index: 2; transition: all 0.3s ease; }
 .btn-3d .btn-bg {
     position: absolute;
     top: 0;
@@ -449,36 +393,6 @@ body {
     transform: translateY(-5px) rotateX(10deg);
     box-shadow: 0 20px 40px rgba(0, 245, 255, 0.3);
 }
-
-/* Rotating Cube */
-.hero-3d-object {
-    flex: 0 0 400px;
-    height: 400px;
-    perspective: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.rotating-cube {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: rotateCube 20s infinite linear;
-}
-.cube-face {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    opacity: 0.8;
-}
-
-.cube-face.right { transform: rotateY(90deg) translateZ(100px); }
-.cube-face.left { transform: rotateY(-90deg) translateZ(100px); }
-.cube-face.top { transform: rotateX(90deg) translateZ(100px); }
-.cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
 
 /* Section Styles */
 .section-3d {
@@ -554,7 +468,8 @@ body {
     font-size: 3rem;
     margin-bottom: 20px;
 }
-.card-front h3 {
+.card-front h3,
+.card-back h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: var(--primary-color);
@@ -564,25 +479,20 @@ body {
     color: var(--text-gray);
     line-height: 1.6;
 }
-.card-back h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: var(--text-light);
-}
 
 /* Projects Section */
 .projects-3d-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduced from typical 350px */
-    gap: 30px; /* Reduced gap between cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 .project-3d {
-     background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
-    padding: 15px; /* Reduced padding */
+    padding: 15px;
     transition: transform 0.3s ease;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -592,91 +502,19 @@ body {
     box-shadow: 0 25px 50px rgba(131, 56, 236, 0.25), 0 10px 20px rgba(131, 56, 236, 0.15);
 }
 .project-image {
-    height: 180px; /* Reduced height from typical 250px */
+    position: relative;
+    width: 100%;
+    height: 180px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 15px;
 }
-.project-preview {
-    width: 80%;
-    height: 80%;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.project-3d:hover .project-preview {
-    transform: scale(1.03) rotateY(2deg);
-}
-.preview-3d {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-.preview-3d.website {
-    background: linear-gradient(45deg, #ff006e, #8338ec);
-}
-.preview-3d.website::before {
-    font-size: 3rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-.preview-3d.game {
-    background: linear-gradient(45deg, #00f5ff, #ff006e);
-}
-.preview-3d.game::before {
-    font-size: 3rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-.preview-3d.ar {
-    background: linear-gradient(45deg, #8338ec, #00f5ff);
-}
-.preview-3d.ar::before {
-    font-size: 3rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-.project-info {
-    padding: 30px;
-    position: relative;
-    z-index: 1;
-}
-.project-info h3 {
-    font-size: 1.2rem; /* Smaller title */
-    margin-bottom: 8px;
-    color: var(--primary-color);
-    text-rendering: optimizeLegibility;
-}
-.project-info p {
-     font-size: 0.9rem; /* Smaller description text */
-    margin-bottom: 15px;
-    color: var(--text-gray);
-    line-height: 1.6;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.project-image {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
-
 .project-overlay {
     position: absolute;
     top: 0;
@@ -687,15 +525,8 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-
-
-.project-3d:hover .project-image img {
-    transform: scale(1.05);
-}
-
-.project-3d:hover .project-overlay {
-    opacity: 1;
-}
+.project-3d:hover .project-image img { transform: scale(1.05); }
+.project-3d:hover .project-overlay { opacity: 1; }
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
@@ -783,13 +614,6 @@ body {
     flex-direction: column;
     gap: 20px;
 }
-.skill-3d {
-    position: relative;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: transform;
-}
-
 .skill-3d span {
     color: var(--text-light);
     font-weight: 500;
@@ -813,11 +637,6 @@ body {
     width: 0;
     transform: translateZ(0);
 }
-.skill-category-3d:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
-}
-
 
 /* Contact Section */
 .contact-3d {
@@ -947,10 +766,7 @@ body {
     border-top: 1px solid var(--glass-border);
     margin-top: 100px;
 }
-.footer-content p {
-    color: var(--text-gray);
-    margin: 0;
-}
+.footer-content p { color: var(--text-gray); margin: 0; }
 
 /* Animation Classes */
 .fade-in {
@@ -978,7 +794,6 @@ body {
     .contact-3d { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
 }
-
 @media (max-width: 480px) {
     .nav-container { padding: 0 20px; }
     .glitch-text { font-size: 2rem; }
@@ -994,7 +809,6 @@ body {
     .cube-face.top { transform: rotateX(90deg) translateZ(75px); }
     .cube-face.bottom { transform: rotateX(-90deg) translateZ(75px); }
 }
-
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar { width: 8px; }
